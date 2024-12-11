@@ -5,6 +5,7 @@
 //Define API url
 var apiURL = "https://prog2700.onrender.com/threeinarow/sample";
 
+alert("Hello");
 
 function fetchPuzzleData(){
     fetch(apiURL)
@@ -18,6 +19,12 @@ function fetchPuzzleData(){
 
 //Req 2: Draw and display 3-in-a-row table with JS only
 //Function to create the puzzle grid (unobtrusive JS)
+function createPuzzleGrid(rows) {
+    const gameContainer = document.getElementById("game-container");
+
+    //Create table element
+    const table = document.createElement("table");
+}
 
 //Req 3: Changing of aquare colours with mouse clicks
 
