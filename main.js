@@ -71,14 +71,49 @@
         }
     }
 
-    //Initialize by fetching puzzle data
-    fetchPuzzleData();
 
     //Req 4: 3-in-a-row puzzle status checking
 
     //Check the currentState for the puzzle and update status message
+    function checkPuzzleStatus(puzzleData) {
+        const statusMessage = document.getElementById('status-message');
+        const errors = [];
 
-    //Req 5: Error display checkbox
+        //Iterate over each row and square to check the puzzle state
+        puzzleData.forEach(rowData => {
+            rowData.forEach(squareData => {
+                //If the currentState doesn't catch the correct state, show an error
+                if (squareData.currentState !== squareData.correctState) {
+                    errors.push(squareData);
+                }
+            });
+        });
+
+        //Req 5: Error display checkbox
+        const showErrorsCheckbox = document.getElementById('show-errors');
+        if (showErrorsCheckbox.checked) {
+            highlightErrors(errors);
+        }
+
+    }
+
+    //Highlight the incorrect squares when errors are found
+    function highlightErrors(errors) {
+        const allSquares = document.querySelectorAll('td');
+        allSquares.forEach(square => {
+            square.classList.remove('error');
+        });
+    }
+
+    //Event listener for check puzzle button
+    document.getElementById('check-puzzle').addEventListener('click', () => {
+        checkPuzzleStatus(puzzleData.rows);
+    });
+
+    //Load puzzle data on page load
+    document.addEventListener('DOMContentLoaded', fetchPuzzleData);
+
+    
 
     //Req 6: Adding innovative feature 
 })();
