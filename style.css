@@ -3,14 +3,32 @@ body {
     margin: 20px;
 }
 
-h1{
+h1 {
     color: black;
+    text-align: center;
 }
 
 #game-container {
-    display: grid;
-    grid-template-columns: repeat(6, 50px);
-    grid-gap: 5px;
-    justify-content: center;
+    display: table; 
     margin: 20px auto;
+    border-collapse: collapse;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.empty {
+    background-color: #FFF8F0;
+}
+
+.state-1 {
+    background-color: #9DD9D2;
+}
+
+.state-2 {  
+    background-color: #FF8811;
 }
