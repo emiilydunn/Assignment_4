@@ -22,8 +22,15 @@ function fetchPuzzleData(){
 function createPuzzleGrid(rows) {
     const gameContainer = document.getElementById("game-container");
 
-    //Create table element
-    const table = document.createElement("table");
+    
+   
+
+
+
+
+
+
+
 }
 
 //Req 3: Changing of aquare colours with mouse clicks
