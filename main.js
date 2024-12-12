@@ -2,8 +2,12 @@
 (() => {
 
     //Define API URL and initialize variable to hold puzzle data
-    const apiURL = "https://prog2700.onrender.com/threeinarow/sample";
+    //const apiURL = "https://prog2700.onrender.com/threeinarow/sample";
     let puzzleData = {};
+
+    //Random link for testing
+    //https://prog2700.onrender.com/threeinarow/random	
+    
 
     //Initialize timer variables
     let startTime;
