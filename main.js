@@ -29,7 +29,7 @@
         //Clear any existing content just in case
         gameContainer.innerHTML = "";
 
-        //Create a new table element
+        //Create a new table element to hold the game grid
         const table = document.createElement('table');
 
         //Iterate over each row in the grid data and create a table row
@@ -40,7 +40,7 @@
             rowData.forEach((squareData, columnIndex) => {
                 const squareCell = document.createElement('td');
 
-                //Set data attributes for row and column
+                //Set data attributes for row and column to identify cells later on in code (I will forget otherwise)
                 squareCell.dataset.row = rowIndex;
                 squareCell.dataset.column = columnIndex;
 
@@ -135,7 +135,7 @@
 
         //Time to status message 
         const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-        statusMessage.textContent += ` Time: ${elapsedTime}s`;
+        statusMessage.textContent += ` Time: ${elapsedTime} seconds`;
 
         //Show or hide errors based on checkbox state
         const showErrorsCheckbox = document.getElementById('show-errors');
