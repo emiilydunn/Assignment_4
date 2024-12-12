@@ -5,6 +5,11 @@
     const apiURL = "https://prog2700.onrender.com/threeinarow/sample";
     let puzzleData = {};
 
+    //Initialize timer variables
+    let startTime;
+    let timerInterval;
+    let isGameStarted = false;
+
     //Function to fetch puzzleData from API
     function fetchPuzzleData() {
         fetch(apiURL)
@@ -80,6 +85,8 @@
 
     //Function to handle cell clicks
     function handleSquareClick(rowIndex, columnIndex) {
+        //Start timer when a square is clicked
+        startTimer();
         const squareData = puzzleData.rows[rowIndex][columnIndex];
         if (squareData.canToggle) {
             //Cycle through states(0 to 1 to 2 back to 0 etc)
@@ -93,6 +100,9 @@
 
     //Function to check the puzzle status
     function checkPuzzleStatus() {
+        //Start timer if it hasn't started yet
+        startTimer();
+     
         let incorrect = 0;
         let incomplete = 0;
         let total = 0;
@@ -122,6 +132,10 @@
         } else {
             statusMessage.textContent = "Click a square to get started!";
         }
+
+        //Time to status message 
+        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        statusMessage.textContent += ` Time: ${elapsedTime}s`;
 
         //Show or hide errors based on checkbox state
         const showErrorsCheckbox = document.getElementById('show-errors');
@@ -158,12 +172,27 @@
 
     //Add event listener for the 'show errors' checkbox
     document.getElementById('show-errors').addEventListener('change', (event) => {
+        //Start timer when checkbox is toggled
+        startTimer();
         if (event.target.checked) {
             highlightErrors();
         } else {
             clearErrors();
         }
     });
+
+    function startTimer() {
+        if (!isGameStarted) {
+            isGameStarted = true;
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+    }
+
+    function updateTimer() {
+        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        document.getElementById('time-display').textContent = `Time: ${elapsedTime} seconds`;
+    }
 
     //Add event listener to start the game when the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', fetchPuzzleData);
